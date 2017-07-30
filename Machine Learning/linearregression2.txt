@@ -1,0 +1,84 @@
+Multivariate Linear Regression
+
+- Modifying house pricing data set to include multiple features/ variables
+- n = number of features
+- x(i) = input of ith training example
+- xj(i) = value of feature j in ith training example
+- new hypothesis: htheta(x) = theta0 + theta1x1 ... thetanxn
+  - We assume X0(i) = 1 for conveniuence, allows us to do matrix operations with theta and x
+- Theta Transpose x
+  - a row vector of theta1 ... thetan and x as a column vector
+  - mutivariate linear regression
+- Gradient descent for multiple features
+  - Cost function based on new hypothesis
+    - J(theta0 ... thetan) = (1/2m) sum(i to m) of (htheta(x(i)) - y(i))^2
+    - Rewrite it as J(theta) = 1/2m sum (theta(vector)(x(i)) - y(i))^2
+  - thetaj := thetaj - alpha (1/m sum(htheta(x(i)) - y(i))xj(i))
+    - repeat until convergence
+  - Feature scaling
+    - make sure features are on a similar scale
+      - take on similar range of values
+      - helps avoid skewed graphs - might cause gradient to take longer to get to the global minimum
+      - ex housing prices can be cost per x unit - instead of price per ft => price per 2000 ft; instead price per bedroom => price per 5 bedrooms
+      - ideally get every feature into approximately -1 < xi < 1
+    - mean normalization
+      - replace xi with xi - ui to make featurs have approximately zero mean
+      - x1 := ( x1 - avg value of x1 ) / range or standard deviation
+        - the quizzes use range, the programming exercises use standard deviation
+  - Debugging
+    - How to make sure GD is working correctly
+    - Job is to find theta such that it minimizes J(theta)
+      - You can plot J by # of iterations of of GD
+        - it should get smaller as iterations increase until it reaches its limit (convergence)
+    - Automatic convergence test: declare convergence if J decreases by less than some small value in one iteration
+    - If the plot is increasing, then the best way to resolve it is usually a smaller alpha
+      - For a sufficiently small alpha, J should decrease on every iteration
+      - But if alpha is too small, then it will be slow to converge
+      - To choose alpha, try .001, .01, .1, 1 until you find a good value
+        - or similar ranges
+  - Feautures and polynomial regression
+    - You dont have to use the features given, you can create new features
+      - frontage and depth => area( frontage x depth)
+      - Leads to better models
+    - You could also fit a quadratic model instead of linear - or other polynomial functions
+      - feature scaling becomes increasingly important for doing such
+    - We'll discuss algorithms to automatically pick features later
+- Normal equation: method to solve for theta analytically
+  - You minimize quadratic functions by taking the derivative and setting it to 0
+    - Easy for when theta is a real number but difficult when theta is n + 1 dimensional vector
+  - Possible to take partial derivative for theta0...thetan and solve for each
+    - ex. housing prices with size 4
+      - add x0 = 1
+      - create a matrix with all values of xj
+      - create a vector with y
+      - to minimize, theta = (X^T(X))^-1 * (X^T(Y))
+      - (X^T*X)^-1
+        - Octave: pinv(X'*X)*X'*y
+          - X' denotes X^T
+          - pinv computes the inverse of a matrix
+          - * for multiplication
+  - When using normal equation method, feature scaling is unnecessary
+  - Noninvertability of Normal Equation
+    - What if X^T(X) is non-invertable? singular/degenerate
+      - Happens rarely
+      - And Octave will do the right thing - it has to functions for inverting - pinv and inv
+        - pinv will compute theta even if it's noninvertable - pseudo inverse
+    - What causes non invertable?
+      - if two features are related (redundancy)
+      - if you have too many features (e.g. m <= n )
+        - You could delete some features or use regularization (taught later on)
+- How to choose which to use
+  - Gradient Descent
+    - Need to choose alpha
+    - Needs many iteration
+    - But works well even when n is large
+    - O(kn^2)
+  - Normal Equation
+    - No need to choose alpha or iterate
+    - Need to compute (X^T(X))^-1
+    - Slow if n is very large (O(n^3))
+    - How big is too big for n?
+      - maybe 10000 or greater
+  - So as long as the number of features aren't too large, normal equation gives us a good alternative. However, they wont work for more sophisticated learning algorithms. But great for linear regression
+- 7921, 5184, 8836, 4761
+- 6675.5 , 4075
