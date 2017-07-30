@@ -1,0 +1,41 @@
+Node fundamentals
+
+- Created by Ryan Dahl
+- Server side JS - makes JS a general purpose programming language
+- Uses V8 (Google Chrome interpreter)
+- Heavily uses Evented I/O (Async I/O) which is based on CPS and very different from other programming languages
+  - Callbacks and CPS
+  - Ajax requests
+  - Asynchronous operations
+- fs module - filesystem module
+  - buffer - contains binary data
+  - can be converted to a string by concatenating a buffer with a string
+  - buffer.toString() to convert explicitly
+- Error object
+  - an instance object of the Error contructor
+  - has a message property
+  - and a stack property
+    - gives you stacktrace from the place where the error was thrown - helps debug
+- More Callbacks
+  - Error handling
+  - reduces how many times you close()
+- Snippet for readline
+  - var readline = require('readline');
+  - var rl = readling.createInterface({input: process.stdin, output: process.stdout });
+- Promises
+  - an object that may produce a single value some time in the future
+  - similar to futures in python
+  - 3 states: pending, fulfilled, rejected
+  - promises avoid callback nesting; have consolidated error handling
+  - promise.then(success_callback, error_callback)
+    - promise.then(success_callback).catch/fail(error_callback);
+  - You can chain promises .then().then().catch().finally()
+  - do several asynchronous tasks with Promise.all
+  - jQuery has promises built it: .done, .fail, .always
+  - fetch() is new way to do api calls in the browser
+  - axios.get is recommended
+    - library that helps you call api's
+    - less code than fetch
+    - .data converts text to json automatically
+  - manage your promises with try{} catch{} statements
+  -  non-native promises: bluebird

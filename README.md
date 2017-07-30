@@ -13,6 +13,7 @@ Feel free to use or share :-)
 ## Development
 
 ### Javascript
+* [Node.js Fundamentals](./Javascript/node.txt)
 * [TypeScript Fundamentals](./Javascript/typescript.txt)
 * [Angular Fundamentals](./Javascript/angular.txt)
 * [React-Redux](./Javascript/React-Redux.txt)
