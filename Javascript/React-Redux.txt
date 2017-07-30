@@ -1,0 +1,153 @@
+React Redux
+
+- Skeleton
+  - Components + React.js + Redux.js
+    - -> Transpile step: Webpack and babel
+      - transpiles code that can't be run in browser into something that can be
+      - -> application.js
+        - code that browser understands
+- React
+  - Components/views are exchangeable
+    - snippets of code that produce html
+    - nested in different fashions to make complex applications simple
+  - JSX is a subset of javascript
+    - allows us to write what looks like html inside JS
+    - webpack and babel translate it to vanilla JS
+    - Cleaner than writing out in vanilla JS
+  - ES6 gives us access to JS Modules
+    - Can't make references to diff modules without first getting explicit access to it
+  - React is diverging to two difference libraries
+    - core React library can deal with components
+    - but ReactDOM deals with DOM
+  - When we create a component, we're making a class or type of a component not it's instance
+    - <componentName/>
+  - function(){} === () => {}
+    - arrow notation is good because it allows us to use the self property 'this'
+    - otherwise identical to function
+  - Each component must have its own file
+    - must import React in each
+    - must include a way to allow other components to reference
+      - export default ModuleName;
+        - in component referencing: import ModuleName from './pathtomodulename';
+  - Class based components
+    - vs functional component
+    - can keep a record
+    - Object with properties and methods
+    - Must have a render function that returns jsx
+  - Handling Events
+    - Declare eventhandler then pass it to the element that monitors event
+  - State
+    - Whenever a components state is changed, it rerenders
+    - Initialize state by setting it inside the class's constructor
+      - super() inherits properties from Component
+      - initialize state here
+  - Controlled component
+    - An element whose value is set by state instead of something that changes state
+  - Downwards Data Flow
+    - Only the most parent component should be responsible for fetching data
+      - Usually index
+      - All the child components will be able to make use of the data
+    -  Pass data to child by defining property in JSX tag
+      - referred to as passing props
+      - Arrive as an argument in functional components
+      - In class, they're available anywhere as this.props
+      -
+  - Styling
+    - in jsx, use className instead of class to refer to css classes
+  - Before writing a new component, always ask if you expect the component to maintain a state?
+  - Handling null props
+    - add a conditional to prevent component from loading before props received
+  - Passing callbacks is a good way for parent and child to communicate
+    - But gets muddy after 2-3 passes... this is where redux might be useful
+  - Recap
+    - Functional Components vs Class Based
+      - Functional components are lightweight and fast
+    - States
+      - Whenever this is changed, the app instantly rerenders
+      - Currently it's localized to each component, in redux it will be at a more application level
+    - Import Export statements
+      - relative path reference for files that we wrote
+      - just the name for libraries
+    - Callbacks
+      - Shouldn't have too many - can reduce them with redux
+- Redux
+  - What is it?
+    - Allows us to separate the views for our application from our data
+      - The state container is the collection of data it has for the apps
+    - React will represent the views
+    - Centralize all of our applications data inside a single object
+  - Reducer
+    - Don't every modify state directly
+      - Only update it by calling something such as setState
+      - Reducers specifically return a new instance of state instead of updating it
+    - A function that returns a piece of the application state
+      - Since our application can have many difference pieces of state, it can have many reducers
+    - Step 1 - Create Reducer
+      - export default at top
+    - Step 2 - Wire it up to our application
+      - through combineReducers component of redux
+    - combineReducers allows application state to be accessed by React via connect and mapStateToProps
+      - it makes our reducer a key for state
+    - Switch statements in reducers to handle action calls
+      - Has a default case that will simple return state
+      - Always reduce a fresh new object, not a mutated object
+  - A container ("Smart component") is a component that has direct access to the state created by redux
+    - Must figure out which components care about when state changes
+      - These components are called containers
+    - import { connect } from 'react-redux';
+    - linked via mapStateToProps(){}
+    - export the container not the component
+      - export default connect(mapStateToProps)(component);
+  - Actions and Action creator
+    - These change our states
+    - Action creator returns an action
+    - Flow:
+      - User triggers an event
+      - Event calls on an action creator
+      - Creator returns an action
+      - Action automatically sent to all reducers
+      - Reducers can change the state
+        - switch statements determine whether action matches the reducer
+      - New state has been assembled
+      - Notifies containers of the changes to state
+      - On notification, container will rerender with new props
+    - Need to wire action creator up to redux
+      - import { bindActionCreators } from 'redux' and our action creators
+      - add the function mapDispatchToProps(dispatch) {
+        - return bindActionCreators({ action: actionCreator}, dispatch);
+          - this will make action a key in this.props that will trigger actionCreators
+      - add mapDispatchToProps to our export connect
+    - Actions
+      - an object with a type property and sometimes a payload
+  - Redux is in charge of managing our application state, which is separate than our component state
+    - Single object
+  - Each key in combineReducers has one reducer assigned to it
+    - reducers change application state over time via actions
+- Data modeling
+  - Create a mockup/wireframe
+  - Define components/containers
+- Middlewares are functions that take an action and depending on the actions type/payload/etc they choose what to do on the action before they reach the reducers
+  - Like gatekeepers
+  - Can have many different steps of middleware
+  - npm install --save redux-promise
+- AJAX requests in Redux
+  - axios is a library solely made for making ajax requests from the browser
+  - Similar to jquery
+  - redux-promise is a middleware that looks at the payload property to check if it's a promise
+    - if it's a promise, it stops the action entirely until the request is finished, then dispatches a new action of the same type with a payload of the resolved request
+- React-Router
+  - Allows us to show different components based on URL
+    - Serverless App
+  - Intercepts changes in the URL and shows different components on the screen based on the url
+    - History library analyzes changed url and communicates it to React-Router
+  - import { BrowserRouter, Route } from 'react-router-dom';
+    - <BrowserRouter>
+      - <Route path="" component={} />
+    - </BrowserRouter>
+  - No longer need a central app.js file
+  - Life cycle component
+    - componentDidMount
+      - Action that takes place right after rendering component in the DOM
+      - Allows asynchronous operations
+    - componentWillMount
+      - called before the component shows up in the DOM
