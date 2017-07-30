@@ -1,0 +1,102 @@
+Logistic Regression & Classification
+
+- Discrete value for what is being predicted
+  - e.g. spam/not spam; malignant/bening
+  - negative class and positive class
+    - doesn't matter which is which but conventionally the negative class is the absence of something
+- Binary classification
+  - 2 classes
+  - Threshold classifier output
+    - htheta(x) = .5
+      - if htheta(x) > .5, predict y=1
+      - if <.5, predict y=0
+    - but if you have a data point that's skewed, then a .5 threshold will create an inaccurate prediction via linear regression
+      - As such linear regression isn't a great idea for classification
+        - alternative is Logistic regression
+          - makes it so htheta(x) is always between 0 and 1
+- Logistic Regression
+  - Hypothesis representation
+    - 0 <= htheta(x) <= 1
+    - htheta(x) = g(theta^T * x)
+      - g(z) = 1 / (1 + e^-z)
+        - sigmoid function or logistic function
+          - asymptotes at 1 and 0 so perfect for our binary classification
+    - must fit theta to our data
+    - htheta(x) is the estimated probability that y=1 on input x
+      - htheta(x) = p(y=1 | x; theta)
+        - p(y = 0| x; theta) = 1 - htheta(x)
+  - Decision Boundary
+    - Predict y = 1 if htheta(x) >= .5 and y = 0 if htheta(X) < .5
+      - To get this we must find when theta^T * x is equal to 0
+        - anything greater than it will be y = 1 and anything less will be y = 0
+    - htheta(x) = g( theta0 + theta1x1 + theta2x2)
+      - paramater vector is [theta0; theta1; theta2]
+    - The decision boundary is where theta2 + theta3 = -theta0
+    - Non-linear decision boundaries
+      - Higher order polynomials can be added
+  - Cost function
+    - How do we choose our parameters?
+    - Plugged into the linear regression cost function, you get a non-convex function so GD is difficult
+      - non-convex is multiple local optima
+    - cost function for logistic
+      - -log(htheta(x)) if y=1
+      - -log(1-htheta(x)) if y=0
+    - J = (1/m) sum from i to m (Cost function)
+    - Cost function can be rewritten to:
+      - -ylog(htheta(x)) - (1-y)log(1-htheta(x))
+        - when y = 1 the second term disappears
+        - when y = 0 the first term disappears
+        - math is beautiful lol
+      - derived from the principle of maximum likelihood estimation
+      - and convex
+  - Gradient Descent
+    - Repeat
+      - thetaj := thetaj - alpha(sum to m((hthetax^i - y^i)xj)
+        - looks very similar to linear but the definition of htheta(x) has changed so it's not the same
+  - Optimization algorithms
+    - Conjugate gradient, BFGS, L-BFGS
+    - advantages: no need to manually pick alpha
+      - often faster than GD
+    - disadvantages: more complex
+    - octave has these algorithms built in
+      - optimset()
+      - fminunc()
+        - should be more than 2 dimensional theta
+    - function [jVal, gradient] = costFunction(theta)
+      - jVal = [...];
+      - gradient = [....];
+    - options = optimset('GradObj', 'on', 'MaxIter', 100);
+    - initialTheta = zeros(2,1);
+    - [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+  - Multiclass classification
+    - one vs all aka one vs rest
+      - create multiple binary class sets
+      - htheta(x)^i = P(y=i|x;theta)
+        - prediction = maximize htheta(x)^i
+          - prediction becomes classified by highest probability that y = i
+- Regularization
+  - Overfitting
+    - overfitting is when the model fits all of the dataset but has high variance
+    - happens we have too many features and the learned hypothesis fits the training set very well but fails to generalize to new examples
+    - 2 main ways to address it
+      - reduce number of features by manually selecting which to keep (Model Selection algorithms automatically decide which features to keep)
+      - Regularization - keep all features but reduce the magnitude/values of parameters thetaj
+        - works well when we have a lot of features that are useful
+  - Small values for parameters results in a simpler hypothesis that's less prove to overfitting
+  - How do you pick in advance which parameters are less relevant?
+    - Modify cost function to shrink all parameters
+      - lambda is the regularization parameter
+        - if lamba is too large then training set will be underfit
+    - J = (1/2m)*(sum to m((htheta(x) - y)^2) + lambda*sum to m(thetaj^2)
+  - Linear regression
+    - Gradient Descent
+      - thetaj := thetaj (1 - alpha*(lambda/m)) - alpha(1/m)sum to m ((htetha(x^i) - y^i)xj^i)
+    - Normal equation
+      - theta = (X^T * X + lambda[ ] )^-1 * (X^T * y)
+        - if lambda > 0 then regularization will end the non-invertibility issue
+  - Logistic regression
+    - Gradient Descent
+      - thetaj := thetaj - alpha((1/m) sum to m((htheta(x) - y)x) + (lambda/m)thetaj)
+    - Advamced optimization
+      - Change the cost function and gradients to include the new term at the end for regularization
+  - Regularization exclude theta0 in both linear and logistic regression, that should not be changed
