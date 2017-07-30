@@ -1,5 +1,5 @@
 # Notes
-A collection of the notes I took while learning Computer Science and Data Science
+Feel free to use or share :-)
 
 ## Programming
 ### Python
