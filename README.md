@@ -12,6 +12,9 @@ Feel free to use or share :-)
 * [Angular Fundamentals](./Javascript/angular.txt)
 * [React-Redux](./Javascript/React-Redux.txt)
 
+### Production
+* [Scrum-Agile Process](./General/agilescrum.txt)
+
 ## Machine Learning
 * [Univariate Linear Regression](./Machine%20Learning/linearregression.txt)
 * [Multivariate Linear Regression](./Machine%20Learning/linearregression2.txt)

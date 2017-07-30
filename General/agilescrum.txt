@@ -1,0 +1,80 @@
+Scrum-Agile Process
+
+- Agile
+  - Framework for enhanced software development; not an actual development method
+  - agilemanifesto.org
+    - individuals and interactions over processes and tools
+    - working software over comprehensive documentation
+    - customer collaboration over contract negotiation
+    - responding to change over following a plan
+- Scrum
+  - Development process that adheres to the manifesto and principles
+  - Main focus is for self-organizing teams that deliver working code frequently for customer satisfaction
+  - Employed by maintains an evolving product task list/backlog
+  - Keeping a rhythm of cyclic events throughout development
+  - Key role players that keep the process going
+- Scrum-agile shortens the waterfall cycle so there can be more increments of it
+- Backlogs - todo list that focuses on functionality of project
+  - Product backlog - everything you think that you might want in your product
+    - focused on user stories, tasks, bugs/defects
+    - continues to evolve and reprioritizing
+    - details increase as priorities increase
+  - Release backlog - subset of above for specific release
+  - Sprint backlog - functionality selected for current sprints
+    - release is a bunch of sprints
+    - responsibility of scrum team performing the work
+    - estimates refined at beginning of sprint
+    - each item should be no more than 8-10 hours; if more, item should be broken up
+- Cyclic events
+- Sprints - metric for scrum-agile development
+  - constant duration of 2-4 weeks - leads to rhythm
+  - Goal is to design, code, and test a specific part of the software during the sprint
+  - Key ground rule: Team committed to only working sprint backlog
+    - No new work allowed unless commitments met
+- Sprint planning - performed day before first sprint ~4hours
+  - Goals covered and team commits to task in sprint
+- Daily Scrum - 15-20 minutes
+  - Main objective for each team member is to answer the questions:
+    - what did you do yesterday?
+    - what will you do today?
+    - is there anything blocking you?
+  - can't be skipped, items needing more discussion moved to a parking lot, anyone can attend but only the scrum team talks
+  - meant to measure progress, allow team to see entire picture, create accountability, foster communication
+- Scrum of scrums - daily scrum between all scrum masters from different scrum teams - usually for bigger teams
+  - customers more likely to attend this meeting
+- Sprint demo - near end of sprint - time boxed to 2 hours
+  - opportunity to show off work to customers and stakeholders
+  - gets customers and stakeholders involved and establishes trust
+  - everyone participates
+- Sprint retrospective - end of spring - 1 hour
+  - celebrate accomplishments
+  - reflect on sprint
+- Release planning - every n sprints to select specific, larger development milestones to deliver to customer
+  - Release goals covered and team commits to task for release
+    - like a broader sprint planning
+- Scrum team setup
+  - self organizing teams - group of motivated individuals who work together towards a goal, have the ability and authority to take decisions and readily adapt to changing demands
+  - Product owner
+    - part of the team that interfaces with customers
+    - defines features of product being developed
+    - decides release date and contents of release
+    - defines each psrint goal with team
+    - accept/reject results
+    - advocates for team and responsible for prioritizing backlog items based on business value
+  - Scrum team
+    - typically 5-9 people; no more than 10
+    - cross functional - sys eng, sw dev, testers, etc
+    - members should be full time
+    - self organizing - no titles ideally
+    - responsible for committing to work
+    - has authority
+    - works in an open, collocated space, demonstrates results to owner/customers
+    - membership changes only between releases
+  - scrum master
+    - ensures team is fully functional and productive
+    - facilitates team creativity and empowerment
+    - shields the team from external interferences
+    - enables close coop across all roles and disciplines, and removes barriers
+    - responsible for upholding rules, values, and practices
+    - servant-leader and facilitator
+    - represents management to the project and project management
