@@ -4,7 +4,7 @@ Feel free to use or share :-)
 ## Programming
 
 ### Fundamentals
-* [Complexity -  Big O Notations](./General/bigO.txt)
+* [Complexity -  Big O Notation](./General/bigO.txt)
 
 ### Python
 * [Intro](./Python/intro.txt)
