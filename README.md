@@ -2,6 +2,10 @@
 Feel free to use or share :-)
 
 ## Programming
+
+### Fundamentals
+* [Complexity -  Big O Notations](./General/bigO.txt)
+
 ### Python
 * [Intro](./Python/intro.txt)
 * [Data Structures - Lists, Tuples, Dictionaries](./Python/datastructures.txt)

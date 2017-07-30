@@ -1,0 +1,39 @@
+Big O Notation
+
+- big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows
+  - gives us a metric to compare the relative performance of algorithms
+  - it measures the number of operations required to perform the algorithm for a given input
+  - its all about the growth rate as the input grows
+- Classifications
+  - O(1) - constant - this is the best
+    - finding any element of an array
+  - O(log(n)) - logarithmic - very good
+    - binary search
+  - O(n) - linear - pretty good
+    - averaging an array of numbers
+  - O(n log(n)) - n log - OK
+    - Merge sort, heap sort
+  - O(n^2) - geometric - not so good
+    - checking for duplicates in an array, bubble sort, insertion sort
+  - O(2^n) - exponential - bad
+    - brute force password crack
+  - O(m!) - factorial - worst
+- Deriving Big O
+  - Calculating it is really a formal mathematical exercise
+  - you can't mechanically solve for Big O (ie you can't write an algorithm to calculate Big O of another algorithm its an example of the halting problem)
+  - you can examine an algorithm and ballpark it's behavior - i.e. if you know there are two nested for loops, it's probably n^2
+  - Little things don't matter:
+    - drop the constants - O(2n) => O(n)
+    - drop minor terms - O(n^2 + n) => O(n^2)
+    - O(100 + n/2) => O(n)
+    - These terms become minor as the input grows
+- Space complexity
+  - based on how much memory an algorithm takes
+  - inverse relationship between space complexity and time complexity
+- Big O is usually measured in terms of WORST case scenario, but you can consider best or average case
+- Understand what Big O is and why it's important
+- understand different levels of complexity
+- know Big O for difference common algorithms
+- understand difference between space and time complexity
+- understand rules for co-efficients and constants
+- don't worry about deriving big O from scratch
