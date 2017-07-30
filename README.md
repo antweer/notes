@@ -8,6 +8,7 @@ Feel free to use or share :-)
 
 ## Development
 ### Javascript
+* [TypeScript](./Javascript/typescript.txt)
 * [React-Redux](./Javascript/React-Redux.txt)
 
 ## Machine Learning

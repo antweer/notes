@@ -1,0 +1,53 @@
+TypeScript Fundamentals
+
+- Built on top of JavaScript - Superset
+  - Valid JS code is also valid TS code
+- Strong / Static Typing
+  - Allows use to specify what type our variables are
+  - Makes applications more predictable and easier to debug
+- Object-oriented features
+- Compile-time errors
+  - Catch errors before deployment
+- Great tools available
+  - Intellisense in code editor
+- TypeScript transpiles into JS
+  - TS will report errors but still transpile into valid ES5 code
+- Declare variables with 'var' or 'let
+- Types
+  - Any declared variable must stay the same type throughout the app
+  - type annotations with a colon after variable name then the type name
+    - let a: number;
+      - restricts a to numbers throughout the app
+  - const stays the same
+  - enum are written with curly braces {}
+    - enum Color { Red, Green, Blue }
+    - let backgroundColor = Color.Red;
+- Type assertion
+  - (<type>varname) allows us to use methods for different types
+    - also written as (varname as type)
+- Arrow functions similar to lambda expressions on C#
+  - In line annotation
+    - Can annotate arguments being passed into an argument to specify types being passed in
+- Interface
+  - define shapes of an object via annotation so you dont need to make inline annotations
+  - Reference interfaces with a colon
+  - Pascal naming convention
+    - Uppercase
+- Classes
+  - Cohesion
+    - Things that are related should go together
+  - Groups variables and properties that are related
+- Access Modifiers
+  - Public, Private, Protected
+  - By default, all members are Public
+  - add a private key word before initial object is declared inside the class to make it inaccessible outside of the class
+  - Prefix constructor parameter with access modifiers so that they don't have to be declared beforehand
+    - no longer need to reassign variables inside the constructor
+- Properties
+  - use key words such as 'get' or 'set' as prefix to a property name which will be a function inside the class
+- camelCase should be used to name our fields
+- prefix variables with _ to allow usage of variables as property names
+- Modules
+  - add export keyword as prefix to class being exported
+  - import modules with ES6 syntax
+    - import { <name> } from 'relativepath';
