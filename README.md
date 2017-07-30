@@ -13,7 +13,7 @@ Feel free to use or share :-)
 * [React-Redux](./Javascript/React-Redux.txt)
 
 ### UI/UX
-* [Discovery](./General/discovery.txt)
+* [Discovery Process](./General/discovery.txt)
 
 ### Production
 * [Scrum-Agile Process](./General/agilescrum.txt)
