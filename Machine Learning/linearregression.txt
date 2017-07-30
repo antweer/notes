@@ -1,0 +1,152 @@
+Introduction, Univariate Linear Regression, Linear Algebra Review
+
+- Definitions
+  - Arthur Samuel 1959: Field of study that gives computers the ability to learn without being explicitly programmed
+  - Tom Mitchell 1998: A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, it improves with E
+- Learning Algorithms:
+  - Main two: supervised and unsupervised
+    - supervised: we teach
+    - unsupervised: computer learns on its on
+  - reinforcement learning, recommender systems
+- Supervised Learning
+  - the most common type
+  - supervised learning - we gave the machine a data set where the right answer was given - we already know what our correct output should look like, having the idea theres a relationship between the input and output
+  - Ex. Housing price prediction: Plot data size of house by price, fit a line through function to find your intersect
+    - this is called a regression - predicting continuous values output(price)
+  - Ex. Breast cancer malignant or benign based on tumor size vs whether it was malignant or nor
+    - Classification problem - can have more than two possible values for output - discrete values
+    - Can add an age or other vector(s) - up to infinite
+      - learning algorithm will try to find ways to divide data into categories
+      - there are mathematical tricks for the computer to deal with infinite categories
+- Unsupervised Learning
+  - Given a data set and not told what to do with it - the algorithm will find a set of structures in it - Don't know what results should look like, we can derive structure where we dont necessarily know the effect of the variables - there is not feedback based on the prediction results
+  - Clustering: Google news does this by looking at numerous stories per day and grouping them into categories
+    - Used to organize computing clusters at data centers, social network analysis, market segmentation (group customers into different segments), astronomical data analysis
+  - Non-clustering: Cocktail party problem - two speakers with two different mics - each mic records an overlapping conversation
+    - give recordings to an unsupervised algorithm to find structure- will notice two different sounds being added together and separate out the closest sound
+      - We're going to use Octave for our algorithms. Can use matlab as well. How complicated is this? can be done with one line of code: [W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x');
+        - Octave is great and used to prototype algorithms before writing it into more mainline languages since it has linear algebra functions built in
+- Linear Regression with One Variable
+  - Model Representation
+    - size(ft. ^2) by price
+      - supervised learning algorithm because we're given the right answer for each example in the data
+      - regression problem - predicts real-valued output
+      - m = number of training examples
+      - x's = input variables/ features
+      - y's = output variables/ target variable
+      - (x,y) = one training example
+      - (x^i, y^i) = not y to the power i, just ith row -  i.e. ith training example - list of m training examples (i= 1...m) is called a training set
+      - Feed training set to learning algorithm which will output an hypothesis h
+        - in this example it will take the size of house h and the function h will give you estimated price y
+        - h maps from x's to y's
+      - how do we represent h?
+        - h(x) = Oo + O1x
+          - linear function - starting with fitting linear function - Linear regression with one variable i.e. univariate linear regression
+  - Cost function
+    - h(x) = theta0 + theta1x
+      - theta's are paramaters of the model but how do we pick them?
+    - Linear regression allows you to come up with values for theta0 and theta1 so that h(x) is close to y for our training examples (x,y)
+      - Minimize theta0 theta1 - want diff between h(x) and y to be small
+      - (minimize/(theta0theta1))(1/2m) sum(hS(x^1) - y^i)^2 from i=1 to m
+        - first expression is the overall objective function for the regression
+        - J(O0,O1) = (1/2m) sum(h(x^1) - y^i)^2 from i=1 to m
+          - minimize O0O1 J(O0,O1)
+          - squared error function or mean squared error
+            - above is mathematical definition of it
+            - J(θ0,θ1)=1/2m∑i=1m(y^i−yi
+        - The mean is halved as a convenience for the computation of the gradient descent, as the derivative term of the square function will cancel out the 1/2 term
+    - Ideally, we would want our regression to have the lowest value possible for the average squared vertical distances of the scattered points from our line. Which is represented as J(theta1, theta2) = 0
+    - Simplified hypothesis: h(x) = theta1x - assumes theta0 = 0
+      - hypothesis is a function of x for a fixed theta 1
+      - the cost function is a function of the parameter theta1
+      - J(1) = 0 because h(x) = y when theta1 = 1
+        - but what if theta1 is .5?
+          - h(x) - y represents the height of hypothesis minus height of y
+          - so J(.5) = .58
+          - m is number of training examples
+      - Each value of theta1 responds to a different hypothesis/fit and we want the value for theta1 for which J(theta1) is closest to 0
+      - So in this case, theta1 = 1 is our global minimum
+    - 3D surface plot also looks boat like for J- we want the lowest height above surface - The rest of the course will use contour plots/ contour figures to show us these surfaces - 2d representation of of 3d surface plot
+      - As you get closer to the middle of the contour plot, you fit gets closer to the right fit
+    - The points on each circle/ color on the contour plot have the same value for J(theta0, theta1)
+    - We want an efficient algorithm/software to find these values for us instead of finding it ourselves. Later this course we'll find high demensional figures where these graphs can't be plotted - so what algorithm can we use?
+  - Gradient descent
+    - General algorithm used commonly in ML
+    - We can use it to minimize J(theta0,theta1)
+    - It will start with some theta0, theta1 and keep changing to reduce J(theta0, theta1)
+      - Initial value will look around it to find the best direction that will reduce its value
+        - continues doing this until it can no longer reduce
+          - Different initialization values lead to different reduced values
+    - repeat until convergence { thetaj := thetaj - alpha(d/dthetaj)J(theta0, theta1) (for j=- and j=1) }
+      - we take the derivative of our cost function and make steps down the the cost function in the direction with the steepest descent
+      - alpha determines how big of a step down the algorithm will take - its called the learning rate
+        - if alpha is too small, gradient descent can be slow
+        - if alpha is too loarge, gradient descent can overshoot the minimum- it may fail to converge or even diverge
+        - since the derivative decreases as you approach the minimum, gradient descent will automatically take smaller steps. So there's no need to decrease alpha over time
+      - := is assignment operator - takes right value to override left value as opposed to just = which is a truth assertion
+      - (for j = 0 and j =1) means that you want to simultaneously update both theta0 and theta1 after each iteration
+        - we want the algorithm to compute for theta0 and theta1 before updating the values of theta0 and theta1 - more natural
+    - can use this algorithm to minimize any cost function J
+  - Applying gradient descent to our mean squared error cost function
+    - find the partial derivative of the squared error cost function at different theta0 and theta1
+    - computing partials requires multivariate calculus (Review partials on Khan Academy)
+    - Since the cost function for a linear regression is always a convex function (boat shaped function), the gradient descent will always converge to the global optima
+    - algorithma aka "Batch" Gradient Descent because each step of gradient descent uses all of the training examples since we're looking at the sums of all examples / batch of training examples
+  - Linear algebra allows us to find the minimum without using an iterative function - but gradient descent still has application in ML
+- Linear Algebra review
+  - Definitions on the lecture notes / course website
+  - Matrix is a rectangular array of numbers
+    - dimension of matrix = number of rows x number of columns
+    - R^(rows x columns) is a notations for matrices
+    - subscript ij = i,j entry in the ith row and jth column
+  - Vector is an n x 1 matrix
+    - n is how many dimensions the vector has
+      - 4 x 1 is a 4 dimensional vector
+      - R^4
+    - R^n
+    - subscript i refers to the ith element in the vector
+    - unless otherwise specified, assume you're using 1-indexed vectors
+    - common convention is uppercase to refer to matrix and lower to refer to vector
+  - Matrix Addition and Scalar Multiplication
+    - add i,j element of each matrix one at a time
+    - multiple or divide each i,j element by scalar
+    - order of operations pemdas applies
+  - Matrix Vector Multiplication
+    - elements in rows of matrix 1 multiplied by element in columns of vector 2 then summed
+      - the number of columns in matrix 1 must equal to the number of rows in vector 2
+    - You can solve functions with matrix multiplication by turning your data set and function into a matrix and vector respectively
+    - prediction = DataMatrix*parameters
+      - vs (for i =1:1000, prediction(i) = ....)
+  - Matrix Matrix Multiplication
+    - multiple matrix vector multiplication then join the vectors together
+      - number of columns in matrix 1 must equal the number of rows in matrix 2
+    - ith column of product matrix is obtained by multiplying matrix 1 with ith column of matrix 2
+    - (m x n) * (n x o) = (m x o)
+    - Now you can compute multiple competing hypotheses at once
+    - Allows you to take advantage of parallel computations that your computer is capable of
+    - is not commutative
+      - A x B != B x A
+    - is associative
+      - A x B x C = (A x B) x C = A x (B x C)
+    - identity matrix
+      - 1 is identity of scalars
+        - for any number z, 1*z = z*1 = z
+      - Denoted I or Inxn
+        - 1's along the diagonal and 0's everywhere else
+      - For any matrix A, A x I = I x A = A
+  - Inverse
+    - For scalar:
+      - 1 = identity
+      - 3(3^-1) = 1 | 12(12^-1)
+        - true for all except 0
+    - For matrix
+      - A(A^-1) = (A^-1)A = I
+        - Only if A is m x m (is a square matrix) and if it has an inverse
+          - if A is all 0's then it has no inverse
+            - matrices without an inverse are singular or degenerate
+      - Compute inverse with software
+      - pinv(A) is the octave command to find inverse
+  - Transpose
+    - A^T => The rows of A become the columns of A^T
+    - Let A be an m x n matrix and let B = A^T
+      - Then B is an n x M matrix and Bij = Aji
