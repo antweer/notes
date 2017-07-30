@@ -1,0 +1,136 @@
+Angular Fundamentals
+
+- Framework for building client applications in HTML, CSS, JavaScript/TypeScript
+- Architecture
+  - Frontend / Client Side framework with HTML templates and presentation logic
+  - Data gets stored on the server/backend through API with business logic
+- 'e2e' folder is where we write end to end tests for our application
+- 'src' folder is where we write code for our application
+  - 'apps' has components and modules
+  - 'assets' is where static files used by our app are kept
+  - 'environments' has config settings for diff environments such as developer and production environment
+  - favicon.io
+  - index.html
+    - contains web skeleton for our app
+  - main.ts
+    - our main config for angular application - necessary
+  - polyfills.ts
+    - imports scripts required for angular - fills gaps between features of js angular needs vs whats supported by browsers
+  - styles.css
+  - test.ts
+    - testing environment setup
+- tsconfig.json
+  - settings for typescript compiler
+- Hot Module Replacement (HMR)
+  - Whenever source code is modified, webpack uses this to auto refresh your browser
+- All of our stylesheets are compuled into a JS bundle
+- Version history
+  - AngularJS - 2010 - Introduced as a JS framework for client apps
+    - Overly complex so it was rewritten with TypeScript
+  - Angular 2 - 2016 - Overhaul of Angular1 to be more modern
+    - Rewritten with TypeScript
+    - Went up to Angular 2.3 and then...
+  - Angular (4) - 2017 - Not a new framework or major upgrade to Angular 2
+    - Only jumped to 4 to realign all libraries with the same number...
+    - After confusion, they decided to drop the version number to call it just Angular
+- New apps with: 'ng new <name>'
+- Angular Fundamentals
+  - Components
+    - encapsulates data, HTML, and logic for the view
+    - Allows us to make smaller and more maintainable pieces of code
+    - 1 Root component that branches off into multiple components
+    - To use
+      - Create a component
+      - Register it in a module
+      - Add an element in HTML markup
+    - Naming
+      - name.component.ts
+      - name-description.component.ts
+    - import { Component } from '@angular/core';
+    - Decorators:
+      - @Component({
+        - selector: '<CSS Selector>',
+        - template: '<HTML markup>',
+        - templateUrl: 'Relative path to HTML'>
+      - })
+    - export class ComponentName {
+      - title = 'Title of page';
+      - }
+    - Import component in app.module.ts and add in @NgModule decorator under declaration
+    - Shortcut to creating a new component with @angular CLI:
+      - ng g c <component name>
+    - Directives used to manipulate the DOM
+      - prefix these with *
+  - Modules
+    - A container or group of related components
+    - As app grows in functionality, we may need to break app up into smaller modules which have related components
+  - Services
+    - Where the logic goes calling an HTTP service
+    - name.service.ts
+    - Allows us to reuse logic in multiple components
+    - Decouples service from component, allowing us to unit test component without an actual service
+    - Pass in the service we're using inside the constructor for the class being built
+      - export class <name>{
+        - constructor(service: ServiceName) {}
+      - }
+      - This makes the service a dependency for the constructor
+      - Dependency injection
+        - Angular has this built in to it
+        - Must register dependency somewhere  in the module
+          - in the NgModule decorator under providers
+          - Sets it as a single reference object for the entire app
+    - Generating services using Angular CLI
+      - ng g s <name of service>
+      - Adds Injectable decorator into service
+        - Useful if our service has dependencies
+- Display Data and Handling Events
+  - Property binding
+    - You're binding to properties of DOM object
+      - Not HTML objects
+    - Class binding
+    - Style binding
+      - DOM style object properties will show what we can bind
+  - Event binding
+    - Use parenthesis with event name inside
+      - (click)='propertyMethodName()"
+    - $event will represent a DOM event object and allow us to pass it along
+    - DOM events bubble up the DOM tree unless theres a handler to control bubbling
+      - use stopPropogation() method to prevent this
+    - Event filtering
+      - Equivalent to setting conditions on event that trigger certain actions
+      - (keyup.enter)='propertyName'
+        - filters keyup events for the enter key
+  - Template variable
+    - Getting value from target field
+      - $event.target.value
+    - Declare template variables with a hashtag #
+      - Allows us to reference the value of it directly
+      - #email.value
+  - Two way binding
+    - parenthesis inside square brackets
+      - banana in a box
+      - ngModel is a built in directive used for implementing 2 way binding
+        - [(ngModel)]='reference'
+        - followed by event binding
+        - ngModel is defined in the forms module and must be imported inside component
+          - inside app.module in @NgModule under imports
+  - Pipes
+    - used to format data
+    - Built in pipes
+      - upper case, lower case, number, currency, etc
+    - pipe operator is vertical line | followed by name of pipe
+      - {{ object.key | uppercase }}
+        - OBJECT.KEY
+    - pass in arguments to the pipe with a colon followed by argument in quotes
+      - {{ example | pipe:'arg' }}
+    - Custom pipes
+      - New file labeled 'pipename.pipe.ts'
+        - import { Pipe, PipeTransform } from '@angular/core';
+        - export class PipeName implement PipeTransform { transform(value: any, args?: any){
+          - add logic for transformation and return
+          - }}
+        - @Pipe({
+          - name: 'pipename'
+          - })
+      - register pipe in app.module
+        - import pipe component and add it inside of the declarations array

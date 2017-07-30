@@ -9,6 +9,7 @@ Feel free to use or share :-)
 ## Development
 ### Javascript
 * [TypeScript Fundamentals](./Javascript/typescript.txt)
+* [Angular Fundamentals](./Javascript/angular.txt)
 * [React-Redux](./Javascript/React-Redux.txt)
 
 ## Machine Learning
