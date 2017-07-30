@@ -1,0 +1,63 @@
+Discovery Process
+
+- Previously codeschool.org
+- Design Director teaching.com
+- Discovery Meetings: Taking Complex Ideas and Distilling them into a Plan
+- Product lifecycle: Discovery, information architecture (prototype), design & development
+- Discovery meeting: 1-5 days, proposal is the deliverable, not committed to hire us for the following phases
+  - Ten steps to success
+    - Humanize the relationship
+      - Ice breaker to get people comfortable
+    - Client pitch
+      - Have client explain what they want you to do- a list of features/functions
+      - Show similar competitor products and how they want to make it better or different
+    - Identify assumptions
+      - Have client sketch the product and pitch it to each other to come up with a centralized layout
+      - Client must receive information on the slant to truly understand
+      - pay attention to who's comfortable and who isn't - who's the key stakeholder - what they're focused on drawing
+    - Identify the core experience
+      - Drill down to core functions of application
+        - what is everything made of
+      - e.g: flashcard app => deck => cards => two sides: term & definition => text and/or media
+      - Could be a flow chart
+    - Identify user types & success actions
+      - focused on user experience
+      - what action would each user take to see product as a success
+    - Identify every step a user needs to complete success actions
+      - Top down is best and keep it simple/basic
+      - you can add more details as you expand
+      - Identify each action that can be taken
+    - Start building your sitemap
+      - Take steps 5 and 6 and break them down and determine every single unique view that exists
+      - List out possible successive actions and identify whats necessary or isn't
+      - Looks more complex than previous steps
+      - can be conveyed easily to client
+    - Pitch sitemap
+      - explain to the client how user will navigate the site
+      - there will be lots of feedback and questions so remain open to it
+      - Hopefully you end up with something mutually agreed upon thats solid
+      - Walk through the flow with client- dialogue is very important
+    - Rough wireframe for each view
+      - wire out each view on the final sitemap
+      - doesn't have to be pretty- this isn't the prototype
+      - Should include data objects that will be there and rough sketch/mockup
+      - app to manage something like this could be Trello
+        - each view is its own list
+      - end product should be a comprehensive feature list for the product
+      - this should give you enough to create an estimate for the project
+      - Could be achieved from an RFP (request for proposal) also but this is mutually agreed upon
+    - Drink & Eat
+      - furthers humanization of the relationship between you and the client and reinforces collaboration
+      - Establishing a healthy working relationship is very important
+  - Discovery Meeting Deliverables
+    - discover summary
+      - includes photos and assets
+      - a narrative of the entire meeting
+    - implementations plan
+      - includes cost estimation and estimate of how long it will take
+    - Put them together ASAP
+  - Get all the right stakeholders, but no more than necessary
+  - Stay humble
+- OOUX
+  - http://alistapart.com/article/object-oriented-ux
+  - Interesting take on ux
