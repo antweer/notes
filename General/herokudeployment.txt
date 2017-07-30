@@ -1,0 +1,41 @@
+Heroku Deployment
+
+- Deployment
+  - heroku login
+    - CLI command for logging in
+    - Git remote setup
+      - heroku git:remote -a APP_NAME
+  - package.json
+    - if node
+  - Procfile
+    - nano into it and add "web: command to start app"
+  - Setup the port correctly
+    - var PORT = process.env.PORT || 8000;
+      - gets env variable port, if there isn't any get 8000
+      - console log replace 8000 with PORT
+  - git add .
+  - git commit -am"heroku setup"
+  - git push
+  - git push heroku
+- debugging
+  - heroku logs --tail
+    - view logs
+  - heroku run bash
+    - login to a temporary server
+- You can add new environments and domain from settings
+- Database setup
+  - npm install pg-promise --save
+  - var pgp = require('pg-promise');
+  - var db = pgp(process.env.DATABASE_URL || {database: 'test'});
+  - db migration can be used to populate database
+    - or add db manually by looking at heroku postgres docs
+    - could also go to dataclips and run SQL commands
+  - 10000 rows limit on free db
+- There are tons of add ons available
+- $$$
+  - Free dynos
+    - go to sleep after 30 minutes of inactivty
+    - 1000 hr free/month
+  - Hobby: $7/ month
+- Documentation
+  - https://devcenter.heroku.com/

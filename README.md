@@ -11,6 +11,7 @@ Feel free to use or share :-)
 * [Data Structures - Lists, Tuples, Dictionaries](./Python/datastructures.txt)
 
 ## Development
+
 ### Javascript
 * [TypeScript Fundamentals](./Javascript/typescript.txt)
 * [Angular Fundamentals](./Javascript/angular.txt)
@@ -20,6 +21,7 @@ Feel free to use or share :-)
 * [Discovery Process](./General/discovery.txt)
 
 ### Production
+* [Deploying Apps on Heroku](./General/herokudeployment.txt)
 * [Scrum-Agile Process](./General/agilescrum.txt)
 
 ## Machine Learning
