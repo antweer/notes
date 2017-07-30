@@ -1,0 +1,63 @@
+Neural Networks
+
+- Logistic regression for non-linear classification works fine when we only have two features but as features add up, it becomes more difficult
+- Ex. Housing Costs
+  - Multiple features
+  - Making them polynomial (quadratic) results in 5000 new features from 100
+    - Growing at O(n^2)
+  - You could use a subset of features but then it's not enough to fit interesting hypothesis
+  - Including cubic will lead to O(n^3) or 170,000 new features from 100
+  - n will be very large for many machine learning algorithms
+- Ex. Computer vision
+  - A computer sees a matrix of values associated with each pixel about brightness, etc - not just the image like humans do
+  - We create a training set by giving computer a set of images that are the object we're identifying and a set of images that aren't
+  - Plots car or not car via classification and then performs a learning algorithm on the values of each pixel to determine what are likely to be cars and what aren't
+    - 50x50 pixel images -> 2500 pixels
+      - n = 2500, 7500 if rgb
+        - If we used quaratic features then we would have 3 million features
+          - Too many!!!
+- Neural Networks are an old algorithm that were motivated by having machines mimic brains
+  - Widely used in the 80s and early 90s but popularity diminished in lates 90s
+  - Recent resurgence: state-of-the-art technique for many applications
+    - Computationally expensive so it's easier to run them
+  - "One learning algorithm" hypothesis
+    - Research shows if you cut the connection from the ear to auditory cortex and connect the eye to it, then the auditory cortex will learn to see instead
+    - If brain can learn to use multiple senses in the same area, then maybe a computer can do the same
+    - You can plug in any sensor to the brain and the brains learning algorithm will figure out how to deal with it
+    - Hoping a similar algorithm exists for us to train machines
+- Neural Networks Representation
+  - Simulate neurons in the brain
+    - Neurons are cells
+    - They receive inputs from Dendrites
+    - And have an output wire called an Axon that sends messages to other neurons
+    - Gets an inpute, does some computation, then sends an output from axons
+    - Can create a constant network of computations and passing of messages
+  - Similar model in our Neuron Network - Very simple model
+    - Feed inputt to a neuron that does some computation with the inputs and creates some output
+      - hthetha(x) = 1 / (1 + e^(-thetta^T * x))
+      - Inputs are usually X1, X2, X3
+        - Sometimes an X0 which is the bias unit and usually 1
+      - Sigmoid (logistic) activation function associated with g(z)
+      - This is a single neuron
+    - A neural Network is a group of these neurons strung together
+      - Multiple layers of inputs
+      - First layer is input layer, final layer is output layer
+      - Layer in between is "hidden layer" - the intuition is that you see inputs and outputs but don't observe the in between
+        - Later we'll see multiple hidden layers
+    - ai^(j) = "Activation" of unit i in layer j
+    - theta^(j) = matrix of weights controlling function mapping from layer j to layer j+1
+    - If network has sj units in layer j, s(j+1) units in layer j+1, then theta^j will be of dimension sj+1 x ((sj) + 1)
+      - The +1 comes from the addition in theta^j of the bias nodes, x0 and theta0^j
+        - Our output nodes wont include the bias nodes while the inputs will
+  - Vectorized implementation
+    - a1^(2) = g(z1^(2))
+      - z values are a linear combination of the x and theta values that go into a particular neuron
+      - The block of z1-3^(1-3) looks like the matrix multiplication of the theta vector * x
+      - Add a0^(2) = 1 => a^(2) => R^4
+  - Just like logistic regression but instead of using the original features x1, x2, x3, it's using a1, a2, a3
+    - Instead of directly feeding x's, it learns it's own features first
+  - More hidden layers in different network architectures
+- Multiclass Classification
+  - Extension of one-vs-all
+  - Output will have as many units as items being classified
+  - Want 1 in the unit we're looking for and 0 elsewhere respective to  whats being classified
