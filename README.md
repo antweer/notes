@@ -1,8 +1,12 @@
 # Notes
 A collection of the notes I took while learning Computer Science and Data Science
 
-## Development
+## Programming
+### Python
+* [Intro](./Python/intro.txt)
+* [Data Structures - Lists, Tuples, Dictionaries](./Python/datastructures.txt)
 
+## Development
 ### Javascript
 * [React-Redux](./Javascript/React-Redux.txt)
 
