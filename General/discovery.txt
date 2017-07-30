@@ -1,7 +1,5 @@
 Discovery Process
 
-- Previously codeschool.org
-- Design Director teaching.com
 - Discovery Meetings: Taking Complex Ideas and Distilling them into a Plan
 - Product lifecycle: Discovery, information architecture (prototype), design & development
 - Discovery meeting: 1-5 days, proposal is the deliverable, not committed to hire us for the following phases
