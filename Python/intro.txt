@@ -1,0 +1,160 @@
+Python Basics
+
+- Fundamentally, a computer: performs calculations (quickly) and remember things
+- Knowledge
+  - declarative: statements of facts/truth
+  - imperative: recipe/howto - sequence of steps to find a solution - important for computation
+    - sequence of simple steps, flow of control process that specifies when each step is executed, a means of determining when to stop
+- Machine Architecture
+  - Fixed program computers are computers designed for a single program
+    - calculator
+  - Stored program computers store and execute instructions
+    - interpreter inside the computer walks through the instructions and executes action - imitates a fixed program computer for each process
+    - aritmetic and logic, simple tests
+  - Basic architecture: Memory (has data and sequence of instructions), input/output, ALU (arithmetic logic unit - takes information from memory, reads it in, does primitive operation then stores things back in memory), Control Unit (has program counter in it- reads instructions and causes operation in ALU to take place, increases program counter, then does a different instruction)
+    - control unit tells you where you are in a sequence of instructions which causes a loop of operations
+  - Basic primitives
+    - move left, move right, scan, print, write, do nothing - Turing proved you can compute anything using these primitives
+    - modern programming languages have more ocnvenient set of primitives
+      - can abstract methods to create new primitives
+    - anything computable in one language is computable in any other language (some easier in some languages than other)
+      - Turing complete
+- Languages
+  - provides us with a set of primitive operations
+  - expressions are complex but legal combinations of primitives in a language
+  - set of primitives, a means of combination, a means of abstraction
+  - associated with every syntactically valid expression is a set of meanings or semantics
+  - semantics as important as syntax
+  - where things go wrong:
+    - syntactic errors, static semantic errors, no errors but different meaning than what programmer intended
+- Types
+  - Program is a sequence of definitions and commands
+    - definitions evaluated
+    - commands executed - instruct the intepreter to do something
+    - can be typed directly into a shell or stored in a file
+  - Objects
+    - type() will tell you type of the object
+    - program manipulate data objects
+    - every object has a type that defines the kinds of things programs can do to them
+    - scalar (cannot be subdivided), non-scalars
+      - scalar objects: int, float, bool, NoneType
+    - Type conversion is called casting
+    - PEMDAS true in Python
+  - Strings
+    - sequence of characters contained within double or single quotes " '
+    - concatenation is combining strings together by adding them
+      - successive concatenation possible in python by multiplying a string with a number
+    - len(string) = number of elements in a string
+    - non scalar - means you can get pieces out by indexing it
+    - [:] for a copy of the original
+    - [#:#] [#:][::#] slicing
+- Variables
+  - part of abstraction
+  - assign values to variables with equal sign =
+  - name should be informative
+  - Binding assigns value to variable
+    - certain keywords can't be bound
+    - value could be any legal expression
+    - update by reassigning it
+- Operators and Branching
+  - comparison < > <= >= ==  !=
+  - not, and, or
+  - Simplest branching statement is a conditional - a test that evaluates to True or False - two branches of actions based on T or F
+    - False block not necessary in python
+  -  starts with an if statement, with instructions underneath and indented; elif; else
+- Input/Output
+  - print()
+  - input("Some question")
+    - usually bound to a variable
+- Control Flow
+  - branching
+  - while loop
+    - unbound number of iterations
+    - can use a counter but must initialize before loop and increment inside loop
+    - may not be able to rewrite with a for loop
+  - for loop
+    - range(a,b,c)
+      - a is start, b is end(not including), c is by how many (default 1)
+  - break pulls out of loop
+  - both for and while allow iteration
+  - Iteration goes beyond branching
+- Guess and checks
+  - you guess a value, check if its right, keep guessing until you find a solution or guess all values => exhaustive enumeration
+    - finite number of choices is a prerequisite
+  - uses declarative knowledge
+  - decrementing function - a value that keeps decreasing throughout the loop to know when to stop
+
+Simple Programs
+
+- Approximate Solutions
+  - we've been making algorithms with integers where theres a finite number of choices so it's easier to guess and check
+  - Now must make smarter guess in small steps
+- Bisection Search
+  - instead of starting at the beginning for your guess, guess half way - check if the guess is too large or too small then guess halfway again and repeat
+  - O(log(n))
+- Floats and fractions
+  - machine can't store an infinite number of decimal points
+  - internally, every number is represented as a binary
+  - converting fractions to binary- find a power of 2 that multiplied by the fraction is a whole number, convert the whole number to binary, then divide it by the power of 2 you found earlier
+  - that's why you sometimes get floating points back because binary numbers can get close to your numbers but sometimes won't get them
+  - given two floats, you don't want to compare them with == because it'll look at their binary values
+  - better to check if difference is close
+  - designers of python made it so printing integers looks pretty
+- Newton-Raphson
+  - General approximation algorithm to find roots of a polynomial in one variable
+    - p(x) = anx^n + an-1x^n-1 + ... + a1x +a0
+  - want to find r such that p(r) = 0
+    - to find sqrt of 24, find the root of p(x) = x^2 - 24
+    - Newton showed that if g is an approximation to the root, then g - p(g)/p'(g) is a better approximation
+  - lets you find the solution to any equation really quickly
+- Functions
+  - allows us to encapsulate pieces of composition
+  - decomposition and abstraction
+    - ex. project - black box you don't know how owrks but you converts image from input source to a wall and magnifying
+    - abstraction idea: don't need to know how projector works to use it
+      - once you've built something you don't neeed to understand how it works
+    - decomposition idea: breaks problem into different self-contained pieces
+  - decomposition: in programming, divide code into modules that are self-contained, used to break up code, intended to be reusable, keep code organized and coherent
+    - you can decompose with functions and classes
+  - abstraction: in programming think of a piece of code as a black box, can't see details, do not need or want to see details, hide them
+  - allows you to use code many times while on debugging once
+  - functions have a name, 0 or more parameters, docstring, and a body
+    - docstring is a comment inside the function that tells you input and output of function
+  - formal parameter gets bound to the value of actual parameter only when the function is called
+    - new scope/frame/environment is created when we enter a function
+    - scope is mapping of names to objects
+  - if theres no return statement, python returns the value None - represents absence of a value
+    - return only has a meaning inside a function
+    - could have more than 1 return but only 1 return will ever be executed
+    - any code after the return statement won't be executed
+  - Scope
+    - inside a function, we can access local and global variables
+      - but can't modify a variable defined outside
+- give default values by initializing parameters initialized in the function
+- Recursion vs Iteration
+  - recursion a programming technique where a function calls itself as long as it does not create an infinite loop
+    - need a recursive step
+    - and a base case
+      - keep reducing until reach a simple case that can be solved directly
+    - the computer creates nested scopes and flow of control passes back to parent scope
+  - iteration loops through a certain action x times
+  - recursion may be simpler, more intuitive
+  - recursion may be efficient from programmer POV but may not be efficient from computer POV
+- Mathematical induction
+  - to prove a statement indexed on integers is true for all values of n
+    - prove it is true when n is the smallest value n=0 or n=1
+    - then that if it's true for an arbitrary value of n, one can show that it must be true for n+1
+- Recursion on non-numerics
+  - palindrome example
+    - remove punctuation and spaces and make every letter lowercase
+    - then just check if first and last of the string are the same and call function on the rest
+- Modules and Files
+  - Can't store all code in one file when your programs get bigger
+  - To resolve this you can make modules
+    - .py files that have different functions in it
+    - then use it in other files by importing the file
+  - python has a filehandle
+    - open files with var = open('name', 'w') and var.close()
+      - 'w' for write
+      - read same way but with r instead of w
+-

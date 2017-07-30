@@ -1,0 +1,77 @@
+Data Structures - Tuples, Lists, Dictionaries
+
+- Tuples
+  - Tuples are immutable
+    - can't change element values... like strings
+    - represented with parenthesis
+  - Conveniently used to swap variable values
+  - Used to return more than one value from a function
+  - Iterable
+- Lists
+  - Like a tuple but mutable
+  - denoted with [ ]
+  - also iterable
+  - Operations
+    - List.append( _ )
+      - will add _ to the end of the list
+        - it has "mutated" the list
+    - concatenate with +
+    - List.extend([another list](
+      - muatates list to include another list
+    - del(List[index])
+      - deletes certain elements of the list
+    - List.pop()
+      - returns and deletes the last element of the list
+    - List.remove(element)
+      - will remove element from this list
+    - list(string)
+      - returns a list with all characters of the string separated out
+    - string.split('character')
+      - splits a string into a list at a particular character
+    - 'character'.join(List)
+      - turns a list of characters into a string joined at a character
+    - sort() and sorted()
+    - reverse()
+- range(number) acts like a tuple from 0 to number-1
+- Lists can have multiple names to pointing to the same object
+  - they are aliases
+    - if you change the attribute in one, then you change the attribute for all
+- Print isn't the same as equality
+  - If 2 lists print the same elements, it doesn't mean they're the same object
+    - the object is the actual memory that is stored
+- Copy a list with [:]
+  - colon makes a copy of list return rather than the list
+- sort() vs sorted()
+  - sort() mutates the list but doesn't return anything
+  - sorted() doesn't mutate the list but returns a sorted list
+- Nested lists possible
+- Avoid mutating a list as you're iterating over it, it may skip over certain elements
+- Functions as objects
+  - Functions are first class objects
+    - have types
+    - can be elements of data structures like lists
+    - can appear in expressions
+      - as part of an assignment statement
+      - as an argument to a function
+  - map(function, list)
+    - applies the function to each element in the list and returns a new list
+    - can feed it multiple lists
+  - particularly useful to use function as arguments when coupled with lists
+- Dictionaries
+  - key-value pairs
+    - indexed by the key
+  - don't rely on the order
+  - mutable
+  - del(Dict[key]) will delete the key and value associated with that key
+  - Dict.keys() or Dict.values() will give you back an iterable for the two
+  - values can be any type
+- keys must be unique and immutable type
+  - recursion is inefficient
+  - rather than recalculating the same values over and over again, keep track of the values you've already done
+  - memoization
+    - put a base case in dict
+    - now the function will check if n is in the dictionary, if it is, it'll return that, else it'll compute
+  - global variables can be convenient to keep track of information inside a function
+    - can be dangerous to use usually since they break the scoping of variables by function call
+      - allows for side effects of changing variable values in ways that affect other computation
+-
