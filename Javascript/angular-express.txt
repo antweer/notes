@@ -1,0 +1,92 @@
+MEAN Stack
+
+- Node.js
+  - Serverside JS
+  - Use a framework like Express to make it less complicated
+    - Wrapper that comes with helpers so we can focus solely on core business logic
+- Angular runs in the browser
+  - Client side JS
+  - Responsible for HTML, CSS, JS/TS
+  - Single Page
+  - Updates DOM
+  - Handles routing of the visual parts
+  - Provides a reactive experience
+- MEAN
+  - Typically there is an exchange of requests between the client and server
+  - The problem with MEAN is that our page is constantly being rerendered so we can't constantly be reaching out to the server
+    - So we give the Client complete control of the App via JS and just communicate with the server for requesting and sending data
+- ./bin/www
+  - Has code for our server
+- ./public/js/app has our bundle required to build the app
+- ./public/stylesheets has our global stylesheets
+- ./views/ folder has templates
+  - With angular, this will be our only file sent to the client from our server since it holds our app
+- Serverside Processes
+  - Node.js backend
+  - /bin/www folder tells server to use nodejs for our app
+    - This is where our app communicates to the server what port to serve the application
+  - 'npm run start' command will run server
+  - Root folder app.js holds code that is executed on each request
+    - Express is used here
+    - set views
+    - apply middleware
+    - set up the static directory thats accessible to public
+    - CORS middleware to allow Cross Origin Request headers
+    - Set up routing
+      - ./routes/app.js
+        - handles routing just '/' because Angular will handle the rest
+  - Express function has 3 callbacks of request, response, and next
+    - a function that can tell the request to travel on
+  - HTTP Requests
+    - GET to get a resource
+    - POST to create a resource
+    - PATCH is to update a resource
+    - PUT is to replace a resource
+    - DELETE to delete a resource
+    - Each of these are wrappers in Express
+  - params look like '/paramname'
+  - queries look like '?queryname=value'
+- MongoDB
+  - Set it up by downloading it and extracting it
+    - essential to mkdir -p /data/db before running mongod
+  - Launch the MongoDB Server and leave it running
+  - Launch Client to interact with the database
+  - mongoose
+    - Package that allows us to define schema's and models, validation, and intuitive database operations
+    - import it into apps and connect
+    - creates a Models folder in root with specific models we want
+      - create the models as a .js file
+        - import mongoose and Schema then construct your schema as a JS Object
+          - Link models with ref key
+        - export mongoose model as an a module
+    - queries are asynchronous - pass a call back that will pass in error and document object
+- Angular
+  - Webpack bundles and builds the application
+  - Single .html file is needed to hold our application
+  - main.ts is for optimizing app at production
+    - where app is bootstrapped - this code gets executed first from the bundle
+  - polyfills.ts allows app to run well on multiple browsers
+  - Use property binding to communicate between components
+  - Loop through with directives *ngFor
+  - Services are passed to components through providers key inside @Component
+  - Built in router
+    - <router-outlet> directive builtin
+    - [routerLink]="[]" directive builtin for href
+    - Child routing - routeroutlet will follow hierarchy
+  - Data-driven forms
+  - HTTP requests are sent with observables that allow them to handle asynchronous requests
+- Authentication
+  - Shouldn't use sessions since Angular only reaches out to backend for data and everything is done clientside
+  - Common approach for SPA authentication is to authenticate with server for log in then sending a token to client for future requests - stored client side
+    - Attach token to all requests made thereafter to validate requests
+    - Extract encrypted data with it
+  - Encrypt password you store in your database
+    - do this with a package such as bcryptjs
+- Lazy loading
+  - Breakdown modules
+  - Reconfigure routing to route to module you want to lazyload
+- Production and deployment:
+  - npm run biul:prod
+  - set up hosted mongodb
+    - configure app.js to use new db
+  - heroku is good for deployment
