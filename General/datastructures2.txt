@@ -1,0 +1,23 @@
+Data Structures - Stacks and Queues
+
+- Particular way of organizing data in a computer so that it can be used efficiently
+- usually pretty abstract and low level, unlike OOP classes
+- Arrays
+  - collection of elements of the same type typically
+  - stored contiguously in memory typically
+  - accessed via index or offset
+  - native support in most modern languages
+- Stack
+  - models a collection of objects
+  - displays last in first out (LIFO) behavior
+  - push, pop(last), peek (get val of next element without removing it)
+  - stacks are commonly used to model navigation
+- Queue
+  - data structure that models a colelction of objects
+  - First in first out behavior  (FIFO)
+  - push, pop(first), peek (get val of first element without removing)
+  - message queues- the firs message received should be the first message displayed to the user
+  - buffers- first piece of data placed in the bugger should be first piece written to disk
+- FIFO vs LIFO
+- understand push, pop, peek
+- be able to implement stacks or queues in pseudo-code or JS/python

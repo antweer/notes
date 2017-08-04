@@ -4,11 +4,10 @@ Feel free to use or share :-)
 ## Programming
 
 ### Fundamentals
+* [Intro (Python Centric)](./Python/intro.txt)
 * [Complexity -  Big O Notation](./General/bigO.txt)
-
-### Python
-* [Intro](./Python/intro.txt)
 * [Data Structures - Lists, Tuples, Dictionaries](./Python/datastructures.txt)
+* [Data Structures - Stacks, Queues](./General/datastructures2.txt)
 
 ## Development
 
