@@ -1,0 +1,60 @@
+React Native
+
+- XCode
+  - Apple's official IDE for apps built for any of Apple's devices
+  - Packages our code and react native library into an installable app and runs it on the ios simulator
+- Node/NPM
+  - for JS outside of the browser
+- watchman
+  - Watches files on the hard drive and waits for them to change
+- React Native CLI
+  - Used to generate mew React Native projects
+  - To create new project
+    - react-native init <projectname>
+  - To run
+    - react-native run-ios
+    - react-native run-android
+- ES Lint
+  - npm install --save-dev eslint-config-rallycoding
+  - .eslintrc file
+    - { "extends": "rallycoding" }
+- Project Directory Walkthrough
+  - Most of the times, we won't edit the core android or ios directories
+    - These are instructions for building your app
+  - We likely won't edit node_modules either
+  - When editing, we will focus on index.android.js and index.ios.js
+    - By default, these are totally identical
+    - These serve as entry points for our application
+    - if you're developing for ios, you'll edit the ios file and vice versa
+- React vs React Native libraries
+  - React
+    - React Library contains code that describes how a component should behave
+    - Knows how to take a bunch of components and make the work together
+  - React Native
+    - Portal to mobile device
+    - Knows how to take the output from a component and place it on the screen
+- Only the root component uses AppRegistry
+- State vs Props
+  - Whenever we communicate from parent component to child component, we use props
+  - State, on the other hand, is for a components internal record keeping
+- Flexbox is the best tool we have for layout styling on React Native apps
+  - flex: # is used for grid
+- Styling must be applied directly inside the component via JSX style of CSS
+  - Object of CSS styling with property names as camelcase instead of normal CSS dash case
+- Views are equivalent to Divs
+- Need Text tags to display text
+- ScrollView allows component to be scrollable
+- TouchableOpacity and TouchableHighlight are button components
+- TextInput is the React Native primitive for input fields
+- To keep index.ios.js and index.android.js as close as possible, we can create an app component that has most of our application and display that component in both indexes
+- Authentication
+  - Firebase API
+    - firebase.initializeApp({ <Setup Object from Website> });
+    - firebase.auth().onAuthStateChanged((user) => {});
+      - returns a user object if someone is logged in and null if not
+    - firebase.auth().signInWithEmailAndPassword(email, password)
+      - a promise that attempts to login with info provided
+    - firebase.auth().createUserWithEmailAndPassword(email, password)
+      - a promise that attempts to create an account with info provided
+    - firebase.auth().signOut();
+      - signs user out if logged in

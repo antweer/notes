@@ -17,6 +17,7 @@ Feel free to use or share :-)
 * [Angular Fundamentals](./Javascript/angular.txt)
 * [Angular-Express (MEAN)](./Javascript/angular-express.txt)
 * [React-Redux](./Javascript/React-Redux.txt)
+* [React Native](./Javascript/reactnative.txt)
 
 ### UI/UX
 * [Discovery Process](./General/discovery.txt)
@@ -24,6 +25,12 @@ Feel free to use or share :-)
 ### Production
 * [Deploying Apps on Heroku](./General/herokudeployment.txt)
 * [Scrum-Agile Process](./General/agilescrum.txt)
+
+## Networks
+* [Network Scanning - Fundamentals of Wireshark](./General/wireshark.txt)
+
+## Cryptocurrency
+* [Fundamentals of Cryptocurrency - Cryptographic Hash Functions](./General/cryptocurrency.txt)
 
 ## Machine Learning
 * [Univariate Linear Regression](./Machine%20Learning/linearregression.txt)

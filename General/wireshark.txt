@@ -1,0 +1,83 @@
+Fundamentals of Wireshark
+
+- What is Wireshark/What to learn
+  - Open source program to capture and analyze network traffic
+  - Traces unauthorized traffic to permitting firewalls
+  - Key resource for network administrators
+  - Learn how devices communicate with one another
+- Basic networking terms and concepts
+  - IP (Internet Protocol) Addresses designed to allow devices to communicate with one another over a network such as internet
+    - Also allows pinpointing device to a specific location (physical)
+    - A set of rules that dictate how communication over the internet works
+    - 'ifconfig' in terminal lets you see all connected interfaces
+      - allows viewing specific addresses
+    - Each numbers between the limiters can go from 0 to 250 - allows billions of unique addressed
+    - Types: Static and Dynamic
+      - Most private users have dynamic
+        - Changes every time the device connects to the internet
+      - Business users and servers usually have static
+        - Don't change - creates stable communication between devices
+    - Use it to find physical location of the device and scan which ports are open
+      - Port scanning allows us to learn which applications are running on that address
+  - Ports are docking points for all information coming into the device
+    - Port ranges are defined and numbered - large range available
+    - Common
+    - FTP works on 421
+    - HTTP/HTTPS
+    - Each port has particular roles and directs packets in particular directions
+  - DNS resolves main names to IP addresses and vice versa
+  - MAC (Media Access Control) Addresses identify network cards - each interface viewed through 'ifconfig' has its own MAC address
+    - Uniquely identifiable on the local network
+  - Protocols
+    - Set of predefined rules that determine how something should be done
+    - Standardized rules for communication in terms of internet
+    - TCP Transmission Control Protocol
+    - UPD User Datagram Protocol - alt to TXP - used primarily for establishing lowlatency and loss tolerating connections between apps on the internet
+- OSI Model
+  - Open System Interaction - 7 layers
+  - Layer 1 - Physical
+    - Deals with signaling between networks on an electrical level
+  - Layer 2 - Data link
+    - Encoding and decoding of data packets as they're translated into bits and responsible for handling errors from layer 1
+    - Responsible for 2 sublayers
+      - MAC - permission to receive and send
+      - LLC - synchronizes frames, ensures flow control, and error handling
+  - Layer 3 - Network
+    - In charge of addressing, error handling, packaging, etc
+  - Layer 4 - Transport
+    - Conducts transfer of data from one host to another while ensuring transparency and handles error recovery (TCP is at this layer). Guarantees data is available in the order sent in
+  - Layer 5 - Session
+    - Manages and terminates connections
+  - Layer 6 - Presentation
+    - Independence from data representation
+    - Example - VOIP converts voice to bits and transfers but presents to you as voice. Encapsulates data with proper wrapping to make it suitable form for the application layer.
+    - Transforms and encrypts data
+  - Layer 7 - Application
+    - Supports apps running on computer, authentication, and services such as HTTP, telnet, etc
+  - All the information gathered in wireshark is layered - knowing the different layers allows us to analyze wireshark data to find where is what
+- Wireshark set up
+  - debian distro 'apt-get install wireshark'
+  - redhat 'yum install wireshark'
+  - download from wireshark.org
+- Intro
+  - Allows you to listen in on any interface available to you
+  - Choose interface then select capture
+    - This will display the UI we will work with and you can apply filters to remove 'white noise'
+  - User Interface Features
+    - Configure columns in Packet list through preferences
+    - Capture packets in promiscuous mode means it will only capture traffic that's targeting your interface
+    - Add preconfigured filters in filter buttons
+    - Have ability to create multiple profiles in Wireshark
+      - Allows us to use wireshark for various different tasks
+    - Filter bar
+- Protocol Filters
+  - tcp - most of our traffic
+  - udp - very little of our traffic - most of it is dns
+    - doesn't guarantee delivery
+  - dns
+    - type dns in filter
+    - or filter port 53 since dns function there
+      - 'udp.port == 53 || tcp.port == 53'
+  - ICMP
+    - ping
+    - fantastic way to test and trouble shoot connections
