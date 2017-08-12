@@ -1,5 +1,7 @@
 Big O Notation
 
+http://bigocheatsheet.com/
+
 - big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows
   - gives us a metric to compare the relative performance of algorithms
   - it measures the number of operations required to perform the algorithm for a given input
